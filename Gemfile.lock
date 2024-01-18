@@ -255,6 +255,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    rolify (6.0.1)
     rouge (4.2.0)
     ruby-graphviz (1.2.5)
       rexml
@@ -341,6 +342,7 @@ DEPENDENCIES
   rails (~> 7.1.0)
   rails-erd
   redis (>= 4.0.1)
+  rolify
   selenium-webdriver
   sprockets-rails
   stimulus-rails

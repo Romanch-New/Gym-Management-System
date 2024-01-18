@@ -35,6 +35,7 @@ gem "redis", ">= 4.0.1"
 # Use Devise for authentication [ user accounts ]
 gem "devise", "~> 4.8"
 
+gem "rolify"
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
