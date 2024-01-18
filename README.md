@@ -43,6 +43,6 @@ Include information about the license. If your project is open source, you might
 ## Contact
 
 ``` 
-Your Name - romanchsharma@icloud.com
+Name - romanchsharma@icloud.com
 Project Link: [https://github.com/Romanch-New/Personal-Business-Management.git])
 ```
