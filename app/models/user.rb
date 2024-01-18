@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :admin, inclusion: { in: [true, false] }
 
   has_many :roles, as: :resource
+  has_many :businesses, foreign_key: 'user_id', dependent: :destroy
 
 
   scope :admin, -> {where(admin: true)}

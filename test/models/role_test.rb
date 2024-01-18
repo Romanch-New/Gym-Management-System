@@ -1,6 +1,9 @@
 require "test_helper"
 
 class RoleTest < ActiveSupport::TestCase
+  setup do
+    @user = users(:one)
+  end
   test "role with admin name can be created" do
     role = Role.new(name: 'admin')
     assert role.valid?
