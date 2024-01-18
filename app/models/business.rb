@@ -1,5 +1,7 @@
 class Business < ApplicationRecord
   belongs_to :admin, class_name: "User", foreign_key: "user_id", inverse_of: :businesses
+  has_many :business_users, dependent: :destroy
+  has_many :users, through: :business_users
   # has_many :invitations, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }

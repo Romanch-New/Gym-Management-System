@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :roles, as: :resource
   has_many :businesses, foreign_key: 'user_id', dependent: :destroy
+  has_many :business_users
+  has_many :businesses, through: :business_users
 
 
   scope :admin, -> {where(admin: true)}
