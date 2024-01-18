@@ -2,7 +2,7 @@ Sure, here's a basic template for a `README.md` file for your project. You can m
 
 
 # Gym Management System
-![banner gebrated by GPT4 ](https://github.com/Romanch-New/Personal-Business-Management/app/assets/images/banner.jpeg)
+![banner gebrated by GPT4 ](https://github.com/Romanch-New/Personal-Business-Management/blob/main/app/assets/images/banner.jpeg)
 ```
 Presently Under Development,
 and this is only the backup of the project for accepting the pull request.
