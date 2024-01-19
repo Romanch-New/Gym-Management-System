@@ -19,7 +19,6 @@ require "faker"
   end
 end
 
-
 # Create a default new_user user
 10.times do
   User.find_or_create_by!(email: Faker::Internet.email, admin: false) do |user|
@@ -31,5 +30,26 @@ end
 User.admin.each do |admin|
   Business.find_or_create_by!(name: Faker::Company.name, business_type: 0) do |business|
     business.user_id = admin.id
+  end
+end
+
+Role::PREDEFINED_ROLES.each do |role|
+  Role.find_or_create_by!(name: role, resource_type: "Business")
+end
+
+# create a default business user
+Business.all.each do |business|
+  10.times do
+    user = User.new(email: Faker::Internet.email, admin: false) do |user|
+      p = "Faker::Internet.password"
+      user.password = p
+      user.password_confirmation = p
+    end
+    user.add_role Role.all.sample.name, business
+    if user.save
+      BusinessUser.create!(business_id: business.id, user_id: user.id, role: Role.all.sample.name)
+    else
+      puts "Failed to save user: #{user.errors.full_messages.join(", ")}"
+    end
   end
 end

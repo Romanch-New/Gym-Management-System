@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
 
   scope :admin, -> {where(admin: true)}
-  scope :new_user, -> {with_role(:new_user)}
+  scope :new_user, -> {with_role(:new_user) && where(admin: false)}
   scope :guest, -> {with_role(:guest)}
 
   after_create :assign_default_role

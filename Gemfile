@@ -51,6 +51,7 @@ group :development, :test do
   gem 'pry-rails' # Use pry for debugging
   gem 'faker' # Use faker for generating fake data
   gem 'rails-erd' # Use rails-erd for generating ERD
+  gem 'table_print' # Use table_print for printing tables in console
 
 end
 
