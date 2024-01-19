@@ -45,9 +45,9 @@ Business.all.each do |business|
       user.password = p
       user.password_confirmation = p
     end
-    user.add_role Role.all.sample.name, business
+    role = Role.all.sample
     if user.save
-      BusinessUser.create!(business_id: business.id, user_id: user.id, role: Role.all.sample.name)
+      BusinessUser.create!(business_id: business.id, user_id: user.id, role: role.name)
     else
       puts "Failed to save user: #{user.errors.full_messages.join(", ")}"
     end

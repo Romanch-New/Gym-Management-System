@@ -11,6 +11,7 @@ class Business < ApplicationRecord
   scope :business, -> { where(business_type: 0) }
   scope :personal, -> { where(business_type: 1) }
 
+
   enum business_type: { business: 0, personal: 1 }
 
   # def invite_user(email, roles)

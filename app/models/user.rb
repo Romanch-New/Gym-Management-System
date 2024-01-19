@@ -19,15 +19,19 @@ class User < ApplicationRecord
   scope :admin, -> {where(admin: true)}
   scope :new_user, -> {with_role(:new_user) && where(admin: false)}
   scope :guest, -> {with_role(:guest)}
+  scope :member, -> {with_role(:member)}
+  scope :staff, -> {with_role(:staff)}
+  scope :coach, -> {with_role(:coach)}
+  scope :nutritionist, -> {with_role(:nutritionist)}
 
   after_create :assign_default_role
 
-  def admin?
-    admin
-  end
-
   def assign_default_role
     self.add_role(:new_user) if self.roles.blank?
+  end
+
+  def admin?
+    admin
   end
 
 end
