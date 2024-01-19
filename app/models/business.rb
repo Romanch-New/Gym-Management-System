@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Business < ApplicationRecord
-  belongs_to :admin, class_name: "User", foreign_key: "user_id", inverse_of: :businesses
+  belongs_to :admin, class_name: 'User', foreign_key: 'user_id', inverse_of: :businesses
   has_many :business_users, dependent: :destroy
   has_many :users, through: :business_users
   # has_many :invitations, dependent: :destroy
@@ -10,7 +12,6 @@ class Business < ApplicationRecord
 
   scope :business, -> { where(business_type: 0) }
   scope :personal, -> { where(business_type: 1) }
-
 
   enum business_type: { business: 0, personal: 1 }
 
@@ -26,6 +27,6 @@ class Business < ApplicationRecord
 
   def user_is_admin
     # puts "In user_is_admin, admin: #{admin.inspect}"
-    errors.add(:admin, "must be an admin") unless admin&.admin?
+    errors.add(:admin, 'must be an admin') unless admin&.admin?
   end
 end

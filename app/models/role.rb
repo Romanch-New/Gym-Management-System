@@ -1,17 +1,16 @@
+# frozen_string_literal: true
+
 class Role < ApplicationRecord
   PREDEFINED_ROLES = %w[admin new_user member staff coach nutritionist guest].freeze
   has_and_belongs_to_many :users,
-                          join_table: "users_roles",  dependent: :destroy
-  
-  belongs_to :resource,
-             :polymorphic => true,
-             :optional => true
+                          join_table: 'users_roles', dependent: :destroy
 
+  belongs_to :resource,
+             polymorphic: true,
+             optional: true
 
   validates_each :name do |record, attr, value|
-    unless PREDEFINED_ROLES.include?(value)
-      record.errors.add(attr, 'is not a predefined role')
-    end
+    record.errors.add(attr, 'is not a predefined role') unless PREDEFINED_ROLES.include?(value)
   end
 
   after_initialize :set_default_role, if: :new_record?

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BusinessUser < ActiveRecord::Base
   belongs_to :business
   belongs_to :user
