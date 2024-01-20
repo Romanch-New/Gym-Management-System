@@ -1,0 +1,36 @@
+# ## Schema Information
+#
+# Table name: `businesses`
+#
+# ### Columns
+#
+# Name                 | Type               | Attributes
+# -------------------- | ------------------ | ---------------------------
+# **`id`**             | `bigint`           | `not null, primary key`
+# **`business_type`**  | `integer`          |
+# **`name`**           | `string`           |
+# **`created_at`**     | `datetime`         | `not null`
+# **`updated_at`**     | `datetime`         | `not null`
+# **`user_id`**        | `bigint`           | `not null`
+#
+# ### Indexes
+#
+# * `index_businesses_on_name` (_unique_):
+#     * **`name`**
+# * `index_businesses_on_user_id`:
+#     * **`user_id`**
+#
+# ### Foreign Keys
+#
+# * `fk_rails_...`:
+#     * **`user_id => users.id`**
+#
+one:
+  name: MyString
+  business_type: 1
+  admin: one
+
+two:
+  name: MyString2
+  business_type: 1
+  admin: two

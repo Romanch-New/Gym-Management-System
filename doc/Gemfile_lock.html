@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Gemfile.lock - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search (/) for a class, method, ..." spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="./Dockerfile.html">Dockerfile</a>
+    <li><a href="./GOALS_md.html">GOALS</a>
+    <li><a href="./Gemfile.html">Gemfile</a>
+    <li><a href="./Gemfile_lock.html">Gemfile.lock</a>
+    <li><a href="./LICENSE.html">LICENSE</a>
+    <li><a href="./Procfile_dev.html">Procfile.dev</a>
+    <li><a href="./README_md.html">README</a>
+    <li><a href="./Rakefile.html">Rakefile</a>
+    <li><details><summary>app</summary>
+    <ul class="link-list">
+      <li><a href="./app/assets/builds/tailwind_css.html">tailwind.css</a>
+      <li><a href="./app/assets/config/manifest_js.html">manifest.js</a>
+      <li><a href="./app/assets/stylesheets/application_css.html">application.css</a>
+      <li><a href="./app/assets/stylesheets/application_tailwind_css.html">application.tailwind.css</a>
+      <li><a href="./app/javascript/application_js.html">application.js</a>
+      <li><a href="./app/javascript/controllers/application_js.html">application.js</a>
+      <li><a href="./app/javascript/controllers/hello_controller_js.html">hello_controller.js</a>
+      <li><a href="./app/javascript/controllers/index_js.html">index.js</a>
+    </ul></details>
+    <li><details><summary>bin</summary>
+    <ul class="link-list">
+      <li><a href="./bin/dev.html">dev</a>
+      <li><a href="./bin/docker-entrypoint.html">docker-entrypoint</a>
+    </ul></details>
+    <li><a href="./config_ru.html">config.ru</a>
+    <li><details><summary>config</summary>
+    <ul class="link-list">
+      <li><a href="./config/credentials_yml_enc.html">credentials.yml.enc</a>
+      <li><a href="./config/master_key.html">master.key</a>
+      <li><a href="./config/tailwind_config_js.html">tailwind.config.js</a>
+    </ul></details>
+    <li><a href="./lib/tasks/auto_annotate_models_rake.html">auto_annotate_models.rake</a>
+    <li><details><summary>log</summary>
+    <ul class="link-list">
+      <li><a href="./log/development_log.html">development.log</a>
+      <li><a href="./log/rubocop_output_txt.html">rubocop_output</a>
+      <li><a href="./log/test_log.html">test.log</a>
+    </ul></details>
+    <li><details><summary>public</summary>
+    <ul class="link-list">
+      <li><a href="./public/404_html.html">404.html</a>
+      <li><a href="./public/422_html.html">422.html</a>
+      <li><a href="./public/500_html.html">500.html</a>
+      <li><a href="./public/apple-touch-icon-precomposed_png.html">apple-touch-icon-precomposed.png</a>
+      <li><a href="./public/apple-touch-icon_png.html">apple-touch-icon.png</a>
+      <li><a href="./public/favicon_ico.html">favicon.ico</a>
+      <li><a href="./public/robots_txt.html">robots</a>
+    </ul></details>
+    <li><details><summary>tmp</summary>
+    <ul class="link-list">
+      <li><a href="./tmp/local_secret_txt.html">local_secret</a>
+      <li><a href="./tmp/restart_txt.html">restart</a>
+    </ul></details>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page Gemfile.lock">
+
+<p>GEM</p>
+
+<pre>remote: https://rubygems.org/
+specs:
+  actioncable (7.1.3)
+    actionpack (= 7.1.3)
+    activesupport (= 7.1.3)
+    nio4r (~&gt; 2.0)
+    websocket-driver (&gt;= 0.6.1)
+    zeitwerk (~&gt; 2.6)
+  actionmailbox (7.1.3)
+    actionpack (= 7.1.3)
+    activejob (= 7.1.3)
+    activerecord (= 7.1.3)
+    activestorage (= 7.1.3)
+    activesupport (= 7.1.3)
+    mail (&gt;= 2.7.1)
+    net-imap
+    net-pop
+    net-smtp
+  actionmailer (7.1.3)
+    actionpack (= 7.1.3)
+    actionview (= 7.1.3)
+    activejob (= 7.1.3)
+    activesupport (= 7.1.3)
+    mail (~&gt; 2.5, &gt;= 2.5.4)
+    net-imap
+    net-pop
+    net-smtp
+    rails-dom-testing (~&gt; 2.2)
+  actionpack (7.1.3)
+    actionview (= 7.1.3)
+    activesupport (= 7.1.3)
+    nokogiri (&gt;= 1.8.5)
+    racc
+    rack (&gt;= 2.2.4)
+    rack-session (&gt;= 1.0.1)
+    rack-test (&gt;= 0.6.3)
+    rails-dom-testing (~&gt; 2.2)
+    rails-html-sanitizer (~&gt; 1.6)
+  actiontext (7.1.3)
+    actionpack (= 7.1.3)
+    activerecord (= 7.1.3)
+    activestorage (= 7.1.3)
+    activesupport (= 7.1.3)
+    globalid (&gt;= 0.6.0)
+    nokogiri (&gt;= 1.8.5)
+  actionview (7.1.3)
+    activesupport (= 7.1.3)
+    builder (~&gt; 3.1)
+    erubi (~&gt; 1.11)
+    rails-dom-testing (~&gt; 2.2)
+    rails-html-sanitizer (~&gt; 1.6)
+  activejob (7.1.3)
+    activesupport (= 7.1.3)
+    globalid (&gt;= 0.3.6)
+  activemodel (7.1.3)
+    activesupport (= 7.1.3)
+  activerecord (7.1.3)
+    activemodel (= 7.1.3)
+    activesupport (= 7.1.3)
+    timeout (&gt;= 0.4.0)
+  activestorage (7.1.3)
+    actionpack (= 7.1.3)
+    activejob (= 7.1.3)
+    activerecord (= 7.1.3)
+    activesupport (= 7.1.3)
+    marcel (~&gt; 1.0)
+  activesupport (7.1.3)
+    base64
+    bigdecimal
+    concurrent-ruby (~&gt; 1.0, &gt;= 1.0.2)
+    connection_pool (&gt;= 2.2.5)
+    drb
+    i18n (&gt;= 1.6, &lt; 2)
+    minitest (&gt;= 5.1)
+    mutex_m
+    tzinfo (~&gt; 2.0)
+  addressable (2.8.6)
+    public_suffix (&gt;= 2.0.2, &lt; 6.0)
+  annotate (3.2.0)
+    activerecord (&gt;= 3.2, &lt; 8.0)
+    rake (&gt;= 10.4, &lt; 14.0)
+  ansi (1.5.0)
+  ast (2.4.2)
+  awesome_print (1.9.2)
+  base64 (0.2.0)
+  bcrypt (3.1.20)
+  better_errors (2.10.1)
+    erubi (&gt;= 1.0.0)
+    rack (&gt;= 0.9.0)
+    rouge (&gt;= 1.0.0)
+  bigdecimal (3.1.6)
+  bindex (0.8.1)
+  binding_of_caller (1.0.0)
+    debug_inspector (&gt;= 0.0.1)
+  bootsnap (1.17.1)
+    msgpack (~&gt; 1.2)
+  builder (3.2.4)
+  bullet (7.1.6)
+    activesupport (&gt;= 3.0.0)
+    uniform_notifier (~&gt; 1.11)
+  capybara (3.39.2)
+    addressable
+    matrix
+    mini_mime (&gt;= 0.1.3)
+    nokogiri (~&gt; 1.8)
+    rack (&gt;= 1.6.0)
+    rack-test (&gt;= 0.6.3)
+    regexp_parser (&gt;= 1.5, &lt; 3.0)
+    xpath (~&gt; 3.2)
+  choice (0.2.0)
+  coderay (1.1.3)
+  concurrent-ruby (1.2.3)
+  connection_pool (2.4.1)
+  crass (1.0.6)
+  date (3.3.4)
+  debug (1.9.1)
+    irb (~&gt; 1.10)
+    reline (&gt;= 0.3.8)
+  debug_inspector (1.2.0)
+  devise (4.9.3)
+    bcrypt (~&gt; 3.0)
+    orm_adapter (~&gt; 0.1)
+    railties (&gt;= 4.1.0)
+    responders
+    warden (~&gt; 1.2.3)
+  drb (2.2.0)
+    ruby2_keywords
+  erubi (1.12.0)
+  faker (3.2.3)
+    i18n (&gt;= 1.8.11, &lt; 2)
+  foreman (0.87.2)
+  globalid (1.2.1)
+    activesupport (&gt;= 6.1)
+  i18n (1.14.1)
+    concurrent-ruby (~&gt; 1.0)
+  importmap-rails (2.0.1)
+    actionpack (&gt;= 6.0.0)
+    activesupport (&gt;= 6.0.0)
+    railties (&gt;= 6.0.0)
+  io-console (0.7.2)
+  irb (1.11.1)
+    rdoc
+    reline (&gt;= 0.4.2)
+  jbuilder (2.11.5)
+    actionview (&gt;= 5.0.0)
+    activesupport (&gt;= 5.0.0)
+  json (2.7.1)
+  kramdown (2.4.0)
+    rexml
+  language_server-protocol (3.17.0.3)
+  loofah (2.22.0)
+    crass (~&gt; 1.0.2)
+    nokogiri (&gt;= 1.12.0)
+  mail (2.8.1)
+    mini_mime (&gt;= 0.1.1)
+    net-imap
+    net-pop
+    net-smtp
+  marcel (1.0.2)
+  matrix (0.4.2)
+  method_source (1.0.0)
+  mini_mime (1.1.5)
+  minitest (5.21.2)
+  minitest-reporters (1.6.1)
+    ansi
+    builder
+    minitest (&gt;= 5.0)
+    ruby-progressbar
+  msgpack (1.7.2)
+  mutex_m (0.2.0)
+  net-imap (0.4.9.1)
+    date
+    net-protocol
+  net-pop (0.1.2)
+    net-protocol
+  net-protocol (0.2.2)
+    timeout
+  net-smtp (0.4.0.1)
+    net-protocol
+  nio4r (2.7.0)
+  nokogiri (1.16.0-aarch64-linux)
+    racc (~&gt; 1.4)
+  nokogiri (1.16.0-arm-linux)
+    racc (~&gt; 1.4)
+  nokogiri (1.16.0-arm64-darwin)
+    racc (~&gt; 1.4)
+  nokogiri (1.16.0-x86-linux)
+    racc (~&gt; 1.4)
+  nokogiri (1.16.0-x86_64-darwin)
+    racc (~&gt; 1.4)
+  nokogiri (1.16.0-x86_64-linux)
+    racc (~&gt; 1.4)
+  orm_adapter (0.5.0)
+  parallel (1.24.0)
+  parser (3.3.0.4)
+    ast (~&gt; 2.4.1)
+    racc
+  pg (1.5.4)
+  pry (0.14.2)
+    coderay (~&gt; 1.1)
+    method_source (~&gt; 1.0)
+  pry-rails (0.3.9)
+    pry (&gt;= 0.10.4)
+  psych (5.1.2)
+    stringio
+  public_suffix (5.0.4)
+  puma (6.4.2)
+    nio4r (~&gt; 2.0)
+  racc (1.7.3)
+  rack (3.0.8)
+  rack-session (2.0.0)
+    rack (&gt;= 3.0.0)
+  rack-test (2.1.0)
+    rack (&gt;= 1.3)
+  rackup (2.1.0)
+    rack (&gt;= 3)
+    webrick (~&gt; 1.8)
+  rails (7.1.3)
+    actioncable (= 7.1.3)
+    actionmailbox (= 7.1.3)
+    actionmailer (= 7.1.3)
+    actionpack (= 7.1.3)
+    actiontext (= 7.1.3)
+    actionview (= 7.1.3)
+    activejob (= 7.1.3)
+    activemodel (= 7.1.3)
+    activerecord (= 7.1.3)
+    activestorage (= 7.1.3)
+    activesupport (= 7.1.3)
+    bundler (&gt;= 1.15.0)
+    railties (= 7.1.3)
+  rails-dom-testing (2.2.0)
+    activesupport (&gt;= 5.0.0)
+    minitest
+    nokogiri (&gt;= 1.6)
+  rails-erd (1.7.2)
+    activerecord (&gt;= 4.2)
+    activesupport (&gt;= 4.2)
+    choice (~&gt; 0.2.0)
+    ruby-graphviz (~&gt; 1.2)
+  rails-html-sanitizer (1.6.0)
+    loofah (~&gt; 2.21)
+    nokogiri (~&gt; 1.14)
+  railties (7.1.3)
+    actionpack (= 7.1.3)
+    activesupport (= 7.1.3)
+    irb
+    rackup (&gt;= 1.0.0)
+    rake (&gt;= 12.2)
+    thor (~&gt; 1.0, &gt;= 1.2.2)
+    zeitwerk (~&gt; 2.6)
+  rainbow (3.1.1)
+  rake (13.1.0)
+  rdoc (6.6.2)
+    psych (&gt;= 4.0.0)
+  redis (5.0.8)
+    redis-client (&gt;= 0.17.0)
+  redis-client (0.19.1)
+    connection_pool
+  regexp_parser (2.9.0)
+  reline (0.4.2)
+    io-console (~&gt; 0.5)
+  responders (3.1.1)
+    actionpack (&gt;= 5.2)
+    railties (&gt;= 5.2)
+  rexml (3.2.6)
+  rolify (6.0.1)
+  rouge (4.2.0)
+  rubocop (1.60.1)
+    json (~&gt; 2.3)
+    language_server-protocol (&gt;= 3.17.0)
+    parallel (~&gt; 1.10)
+    parser (&gt;= 3.3.0.2)
+    rainbow (&gt;= 2.2.2, &lt; 4.0)
+    regexp_parser (&gt;= 1.8, &lt; 3.0)
+    rexml (&gt;= 3.2.5, &lt; 4.0)
+    rubocop-ast (&gt;= 1.30.0, &lt; 2.0)
+    ruby-progressbar (~&gt; 1.7)
+    unicode-display_width (&gt;= 2.4.0, &lt; 3.0)
+  rubocop-ast (1.30.0)
+    parser (&gt;= 3.2.1.0)
+  rubocop-rails (2.23.1)
+    activesupport (&gt;= 4.2.0)
+    rack (&gt;= 1.1)
+    rubocop (&gt;= 1.33.0, &lt; 2.0)
+    rubocop-ast (&gt;= 1.30.0, &lt; 2.0)
+  ruby-graphviz (1.2.5)
+    rexml
+  ruby-progressbar (1.13.0)
+  ruby2_keywords (0.0.5)
+  rubyzip (2.3.2)
+  selenium-webdriver (4.16.0)
+    rexml (~&gt; 3.2, &gt;= 3.2.5)
+    rubyzip (&gt;= 1.2.2, &lt; 3.0)
+    websocket (~&gt; 1.0)
+  sprockets (4.2.1)
+    concurrent-ruby (~&gt; 1.0)
+    rack (&gt;= 2.2.4, &lt; 4)
+  sprockets-rails (3.4.2)
+    actionpack (&gt;= 5.2)
+    activesupport (&gt;= 5.2)
+    sprockets (&gt;= 3.0.0)
+  stimulus-rails (1.3.3)
+    railties (&gt;= 6.0.0)
+  stringio (3.1.0)
+  table_print (1.5.7)
+  tailwindcss-rails (2.3.0)
+    railties (&gt;= 6.0.0)
+  tailwindcss-rails (2.3.0-aarch64-linux)
+    railties (&gt;= 6.0.0)
+  tailwindcss-rails (2.3.0-arm-linux)
+    railties (&gt;= 6.0.0)
+  tailwindcss-rails (2.3.0-arm64-darwin)
+    railties (&gt;= 6.0.0)
+  tailwindcss-rails (2.3.0-x86_64-darwin)
+    railties (&gt;= 6.0.0)
+  tailwindcss-rails (2.3.0-x86_64-linux)
+    railties (&gt;= 6.0.0)
+  thor (1.3.0)
+  timeout (0.4.1)
+  turbo-rails (1.5.0)
+    actionpack (&gt;= 6.0.0)
+    activejob (&gt;= 6.0.0)
+    railties (&gt;= 6.0.0)
+  tzinfo (2.0.6)
+    concurrent-ruby (~&gt; 1.0)
+  unicode-display_width (2.5.0)
+  uniform_notifier (1.16.0)
+  warden (1.2.9)
+    rack (&gt;= 2.0.9)
+  web-console (4.2.1)
+    actionview (&gt;= 6.0.0)
+    activemodel (&gt;= 6.0.0)
+    bindex (&gt;= 0.4.0)
+    railties (&gt;= 6.0.0)
+  webrick (1.8.1)
+  websocket (1.2.10)
+  websocket-driver (0.7.6)
+    websocket-extensions (&gt;= 0.1.0)
+  websocket-extensions (0.1.5)
+  xpath (3.2.0)
+    nokogiri (~&gt; 1.8)
+  zeitwerk (2.6.12)</pre>
+
+<p>PLATFORMS</p>
+
+<pre class="ruby"><span class="ruby-identifier">aarch64</span><span class="ruby-operator">-</span><span class="ruby-identifier">linux</span>
+<span class="ruby-identifier">arm</span><span class="ruby-operator">-</span><span class="ruby-identifier">linux</span>
+<span class="ruby-identifier">arm64</span><span class="ruby-operator">-</span><span class="ruby-identifier">darwin</span>
+<span class="ruby-identifier">x86</span><span class="ruby-operator">-</span><span class="ruby-identifier">linux</span>
+<span class="ruby-identifier">x86_64</span><span class="ruby-operator">-</span><span class="ruby-identifier">darwin</span>
+<span class="ruby-identifier">x86_64</span><span class="ruby-operator">-</span><span class="ruby-identifier">linux</span>
+</pre>
+
+<p>DEPENDENCIES</p>
+
+<pre>annotate
+awesome_print
+better_errors
+binding_of_caller
+bootsnap
+bullet
+capybara
+debug
+devise (~&gt; 4.8)
+faker
+foreman (~&gt; 0.87.2)
+importmap-rails
+jbuilder
+kramdown
+minitest-reporters
+pg (~&gt; 1.1)
+pry-rails
+puma (&gt;= 5.0)
+rails (~&gt; 7.1.0)
+rails-erd
+redis (&gt;= 4.0.1)
+rolify
+rubocop
+rubocop-rails
+selenium-webdriver
+sprockets-rails
+stimulus-rails
+table_print
+tailwindcss-rails (~&gt; 2.3)
+turbo-rails
+tzinfo-data
+web-console</pre>
+
+<p>RUBY VERSION</p>
+
+<pre>ruby 3.3.0p0</pre>
+
+<p>BUNDLED WITH</p>
+
+<pre>2.5.3</pre>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.6.2.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
