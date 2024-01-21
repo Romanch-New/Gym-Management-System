@@ -40,3 +40,4 @@
 # Ignore .idea files
 .idea
 .idea/*
+.idea/Gym Management System.iml

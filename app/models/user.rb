@@ -26,7 +26,6 @@
 #     * **`reset_password_token`**
 #
 class User < ApplicationRecord
-  rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -41,6 +40,8 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles, as: :resource
   has_many :business_users, dependent: :destroy
   has_many :businesses, through: :business_users
+
+  rolify
 
   scope :admin, -> { where(admin: true) }
   scope :new_user, -> { with_role(:new_user) && where(admin: false) }

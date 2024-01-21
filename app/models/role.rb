@@ -27,8 +27,9 @@
 #
 class Role < ApplicationRecord
   PREDEFINED_ROLES = %w[admin new_user member staff coach nutritionist guest].freeze
+
   has_many :user_role, dependent: :destroy
-  has_many :user, through: :user_role, dependent: :destroy
+  has_many :user, through: :user_role
 
   belongs_to :resource,
              polymorphic: true,
