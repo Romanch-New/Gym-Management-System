@@ -46,4 +46,18 @@
 - Goal 43 - Business account users can view blogs of there connected business account and super user.
 - Goal 44 - User without business account can view blogs of super user.
 - Goal 45 - user without business account can subscribe for membership to use there AI based features.
+
+Features
+Find the most recent coach intraction with user and show it on dashboard.
+```
+class User < ApplicationRecord
+  has_many :interactions
+  has_many :coaches, through: :interactions
+
+  def last_coach
+    coaches.order('interactions.updated_at DESC').first
+  end
+end
+```
+
 - etc will update more goals later.
