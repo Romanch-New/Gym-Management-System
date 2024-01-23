@@ -24,6 +24,7 @@
 #     * **`reset_password_token`**
 #
 one: {
+  id: 1,
   email: 'romanch@gmail.com',
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>,
   admin: true
@@ -31,6 +32,7 @@ one: {
 # column: value
 #
 two: {
+  id: 2,
   email: 'ritu@gmail.com',
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>,
   admin: false

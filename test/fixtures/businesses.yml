@@ -26,11 +26,13 @@
 #     * **`user_id => users.id`**
 #
 one:
-  name: MyString
-  business_type: 1
-  admin: one
+  id: 1,
+  name: MyString,
+  business_type: 1,
+  user_id: 1
 
 two:
-  name: MyString2
-  business_type: 1
-  admin: two
+  id: 2,
+  name: MyString2,
+  business_type: 1,
+  user_id: 2

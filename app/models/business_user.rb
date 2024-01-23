@@ -33,4 +33,6 @@ class BusinessUser < ApplicationRecord
   belongs_to :business
   belongs_to :user
   validates :role, presence: true
+
+  scope :find_with_role, ->(roles) { where(role: roles) }
 end

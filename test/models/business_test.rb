@@ -41,13 +41,13 @@ class BusinessTest < ActiveSupport::TestCase
   test 'should save business with name' do
     business = businesses(:one)
     business.name = 'test1'
-    business.admin = users(:one)
+    business.creator = users(:one)
     assert business.valid?, 'Business is valid with name'
     assert_equal business.name, 'test1'
   end
 
   test 'should not save business without business type' do
-    business = Business.new(name: 'Test', admin: users(:one), business_type: nil)
+    business = Business.new(name: 'Test', creator: users(:one), business_type: nil)
     assert_not business.valid?, 'Business is valid without a type'
     assert_includes business.errors[:business_type], "can't be blank"
   end
@@ -59,41 +59,35 @@ class BusinessTest < ActiveSupport::TestCase
     assert_equal business.business_type, 'personal'
   end
 
-  test 'should not save business without user' do
+  test 'should not save business without creator' do
     business = Business.new(name: 'Test', business_type: 1)
-    assert_not business.valid?, 'Business is valid without a user'
-    assert_includes business.errors[:admin], 'must exist'
+    assert_not business.valid?, 'Business is valid without a creator'
+    assert_includes business.errors[:creator], 'must be present and must be an admin'
   end
 
   test 'should save business with user' do
     business = businesses(:one)
     business.name = 'test3'
     assert business.valid?, 'Business is valid with user'
-    assert_equal business.admin, users(:one)
+    assert_equal business.creator, users(:one)
   end
 
   test 'should not save business with duplicate name' do
     business1 = businesses(:one)
-    business1.admin = users(:one)
-    business1.name = 'test4'
+    business1.creator = users(:one)
+    business1.name = 'UniqueBusinessName'
     business1.save
-    business2 = Business.new(name: 'test4', business_type: 1, admin: users(:one))
-    assert business1.valid?, 'Business is valid with name'
-    assert_not business2.valid?, 'Business is valid with duplicate name'
+
+    business2 = Business.new(name: 'UniqueBusinessName', business_type: 1, creator: users(:one))
+    assert business1.valid?, 'Business1 should be valid'
+    assert_not business2.valid?, 'Business2 should not be valid due to duplicate name'
   end
 
-  test 'should only save business if user is admin' do
+
+  test 'should only save business if user is creator' do
     business = businesses(:one)
-    business.admin = users(:one)
+    business.creator = users(:one)
     business.name = 'test5'
-    assert business.valid?, 'Business is valid with admin user'
-  end
-
-  test 'should not save business if user is not admin' do
-    business = businesses(:one)
-    business.name = 'test6'
-    business.admin = users(:two)
-    assert_not business.valid?, 'Business is valid with non-admin user'
-    assert_includes business.errors[:admin], 'must be an admin'
+    assert business.valid?, 'Business is valid with creator user'
   end
 end

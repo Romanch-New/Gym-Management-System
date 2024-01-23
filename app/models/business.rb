@@ -28,14 +28,14 @@
 #     * **`user_id => users.id`**
 #
 class Business < ApplicationRecord
-  belongs_to :admin, class_name: 'User', foreign_key: 'user_id', inverse_of: :businesses
+  belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: :created_businesses
   has_many :business_users, dependent: :destroy
   has_many :users, through: :business_users
   # has_many :invitations, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :business_type, presence: true
-  validate :user_is_admin
+  validates :user_is_creator, on: :create, presence: true
 
   scope :business, -> { where(business_type: 0) }
   scope :personal, -> { where(business_type: 1) }
@@ -52,8 +52,9 @@ class Business < ApplicationRecord
 
   private
 
-  def user_is_admin
-    # puts "In user_is_admin, admin: #{admin.inspect}"
-    errors.add(:admin, 'must be an admin') unless admin&.admin?
+  def user_is_creator
+    return if creator.present? && creator.admin?
+
+    errors.add(:creator, 'must be present and must be an admin')
   end
 end
