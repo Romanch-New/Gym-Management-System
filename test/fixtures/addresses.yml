@@ -1,0 +1,23 @@
+# test/fixtures/addresses.yml
+
+one:
+  addressable_id: 1
+  addressable_type: 'Business'
+  address_type: 'shipping'
+  line1: '123 Main St'
+  line2: 'Apt 4B'
+  city: 'Any town'
+  state: 'Any state'
+  country: 'USA'
+  postal_code: '12345'
+
+two:
+  addressable_id: 2
+  addressable_type: 'Business'
+  address_type: 'billing'
+  line1: '456 Oak St'
+  line2: 'Suite 200'
+  city: 'Other town'
+  state: 'Other state'
+  country: 'USA'
+  postal_code: '67890'
