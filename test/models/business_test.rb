@@ -1,31 +1,24 @@
 # frozen_string_literal: true
 
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `businesses`
+# Table name: businesses
 #
-# ### Columns
+#  id            :bigint           not null, primary key
+#  business_type :integer
+#  name          :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint           not null
 #
-# Name                 | Type               | Attributes
-# -------------------- | ------------------ | ---------------------------
-# **`id`**             | `bigint`           | `not null, primary key`
-# **`business_type`**  | `integer`          |
-# **`name`**           | `string`           |
-# **`created_at`**     | `datetime`         | `not null`
-# **`updated_at`**     | `datetime`         | `not null`
-# **`user_id`**        | `bigint`           | `not null`
+# Indexes
 #
-# ### Indexes
+#  index_businesses_on_name     (name) UNIQUE
+#  index_businesses_on_user_id  (user_id)
 #
-# * `index_businesses_on_name` (_unique_):
-#     * **`name`**
-# * `index_businesses_on_user_id`:
-#     * **`user_id`**
+# Foreign Keys
 #
-# ### Foreign Keys
-#
-# * `fk_rails_...`:
-#     * **`user_id => users.id`**
+#  fk_rails_...  (user_id => users.id)
 #
 require 'test_helper'
 
@@ -62,7 +55,6 @@ class BusinessTest < ActiveSupport::TestCase
   test 'should not save business without creator' do
     business = Business.new(name: 'Test', business_type: 1)
     assert_not business.valid?, 'Business is valid without a creator'
-    assert_includes business.errors[:creator], 'must be present and must be an admin'
   end
 
   test 'should save business with user' do

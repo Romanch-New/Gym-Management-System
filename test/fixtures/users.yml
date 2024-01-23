@@ -1,39 +1,31 @@
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `users`
+# Table name: users
 #
-# ### Columns
+#  id                     :bigint           not null, primary key
+#  admin                  :boolean          default(FALSE)
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  remember_created_at    :datetime
+#  reset_password_sent_at :datetime
+#  reset_password_token   :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
-# Name                          | Type               | Attributes
-# ----------------------------- | ------------------ | ---------------------------
-# **`id`**                      | `bigint`           | `not null, primary key`
-# **`admin`**                   | `boolean`          | `default(FALSE)`
-# **`email`**                   | `string`           | `default(""), not null`
-# **`encrypted_password`**      | `string`           | `default(""), not null`
-# **`remember_created_at`**     | `datetime`         |
-# **`reset_password_sent_at`**  | `datetime`         |
-# **`reset_password_token`**    | `string`           |
-# **`created_at`**              | `datetime`         | `not null`
-# **`updated_at`**              | `datetime`         | `not null`
+# Indexes
 #
-# ### Indexes
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-# * `index_users_on_email` (_unique_):
-#     * **`email`**
-# * `index_users_on_reset_password_token` (_unique_):
-#     * **`reset_password_token`**
-#
-one: {
-  id: 1,
-  email: 'romanch@gmail.com',
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>,
+one:
+  id: 1
+  email: 'romanch@gmail.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>
   admin: true
-}
 # column: value
 #
-two: {
-  id: 2,
-  email: 'ritu@gmail.com',
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>,
+two:
+  id: 2
+  email: 'ritu@gmail.com'
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password12') %>
   admin: false
-}

@@ -1,31 +1,24 @@
 # frozen_string_literal: true
 
-# ## Schema Information
+# == Schema Information
 #
-# Table name: `businesses`
+# Table name: businesses
 #
-# ### Columns
+#  id            :bigint           not null, primary key
+#  business_type :integer
+#  name          :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint           not null
 #
-# Name                 | Type               | Attributes
-# -------------------- | ------------------ | ---------------------------
-# **`id`**             | `bigint`           | `not null, primary key`
-# **`business_type`**  | `integer`          |
-# **`name`**           | `string`           |
-# **`created_at`**     | `datetime`         | `not null`
-# **`updated_at`**     | `datetime`         | `not null`
-# **`user_id`**        | `bigint`           | `not null`
+# Indexes
 #
-# ### Indexes
+#  index_businesses_on_name     (name) UNIQUE
+#  index_businesses_on_user_id  (user_id)
 #
-# * `index_businesses_on_name` (_unique_):
-#     * **`name`**
-# * `index_businesses_on_user_id`:
-#     * **`user_id`**
+# Foreign Keys
 #
-# ### Foreign Keys
-#
-# * `fk_rails_...`:
-#     * **`user_id => users.id`**
+#  fk_rails_...  (user_id => users.id)
 #
 class Business < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: :created_businesses
@@ -34,8 +27,7 @@ class Business < ApplicationRecord
   # has_many :invitations, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
-  validates :business_type, presence: true
-  validates :user_is_creator, on: :create, presence: true
+  validates :business_type, presence: true, inclusion: { in: %w[business personal] }
 
   scope :business, -> { where(business_type: 0) }
   scope :personal, -> { where(business_type: 1) }
@@ -50,11 +42,4 @@ class Business < ApplicationRecord
   #   # with the invitation token as a parameter.
   # end
 
-  private
-
-  def user_is_creator
-    return if creator.present? && creator.admin?
-
-    errors.add(:creator, 'must be present and must be an admin')
-  end
 end

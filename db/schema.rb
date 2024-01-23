@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_19_235303) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_23_183358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_235303) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["business_id", "user_id"], name: "index_business_users_on_business_id_and_user_id", unique: true
     t.index ["business_id"], name: "index_business_users_on_business_id"
     t.index ["user_id"], name: "index_business_users_on_user_id"
   end
@@ -61,7 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_235303) do
     t.bigint "user_id"
     t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
-    t.index %w[user_id role_id], name: "index_users_roles_on_user_id_and_role_id"
+    t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
