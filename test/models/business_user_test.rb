@@ -28,7 +28,7 @@ class BusinessUserTest < ActiveSupport::TestCase
   test 'should not save business user without user' do
     business_user = BusinessUser.new
     assert_not business_user.valid?, 'Business user is valid without a user'
-    assert_includes business_user.errors[:user], "must exist"
+    assert_includes business_user.errors[:user], 'must exist'
   end
 
   test 'should save business user with user' do
@@ -41,7 +41,7 @@ class BusinessUserTest < ActiveSupport::TestCase
   test 'should not save business user without business' do
     business_user = BusinessUser.new
     assert_not business_user.valid?, 'Business user is valid without a business'
-    assert_includes business_user.errors[:business], "must exist"
+    assert_includes business_user.errors[:business], 'must exist'
   end
 
   test 'should save business user with business' do
@@ -68,7 +68,7 @@ class BusinessUserTest < ActiveSupport::TestCase
     business_user = business_users(:one)
     business_user.role = 'invalid'
     assert_not business_user.valid?, 'Business user is valid with invalid role'
-    assert_includes business_user.errors[:role], "is not included in the list"
+    assert_includes business_user.errors[:role], 'is not included in the list'
   end
 
   test 'should not save business user with duplicate user and business' do

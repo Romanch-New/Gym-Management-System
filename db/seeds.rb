@@ -54,4 +54,14 @@ Business.find_each do |business|
       Rails.logger.debug { "Failed to save user: #{user.errors.full_messages.join(', ')}" }
     end
   end
+
+  Address.create!(addressable_id: business.id,
+                  addressable_type: 'Business',
+                  address_type: 'shipping',
+                  line1: Faker::Address.street_address,
+                  line2: Faker::Address.secondary_address,
+                  city: Faker::Address.city,
+                  state: Faker::Address.state,
+                  country: Faker::Address.country,
+                  postal_code: Faker::Address.zip)
 end

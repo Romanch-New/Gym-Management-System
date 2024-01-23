@@ -24,7 +24,7 @@ class Business < ApplicationRecord
   belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: :created_businesses
   has_many :business_users, dependent: :destroy
   has_many :users, through: :business_users
-  # has_many :invitations, dependent: :destroy
+  has_many :addresses, as: :addressable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :business_type, presence: true, inclusion: { in: %w[business personal] }
@@ -33,13 +33,5 @@ class Business < ApplicationRecord
   scope :personal, -> { where(business_type: 1) }
 
   enum business_type: { business: 0, personal: 1 }
-
-  # def invite_user(email, roles)
-  #   invitation = Invitation.new(email: email, roles: roles, business_id: self.id)
-  #   invitation.save
-  #   # Here you can add the code to send the invitation email.
-  #   # The email should contain a link to the `accept` action of `InvitationsController`,
-  #   # with the invitation token as a parameter.
-  # end
 
 end
