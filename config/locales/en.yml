@@ -29,3 +29,5 @@
 
 en:
   hello: "Hello world"
+  business_branch:
+    phone_number_error: "must be a string of 10 to 15 digits"

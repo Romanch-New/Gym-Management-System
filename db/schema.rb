@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_24_111003) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_111003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+  create_table "business_branches", force: :cascade do |t|
+    t.string "name"
+    t.string "phone_number"
+    t.bigint "business_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_business_branches_on_business_id"
   end
 
   create_table "business_users", force: :cascade do |t|
@@ -82,6 +91,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_111003) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "business_branches", "businesses"
   add_foreign_key "business_users", "businesses"
   add_foreign_key "business_users", "users"
   add_foreign_key "businesses", "users"

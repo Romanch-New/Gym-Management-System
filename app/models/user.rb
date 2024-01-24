@@ -38,6 +38,7 @@ class User < ApplicationRecord
   has_many :created_businesses, class_name: 'Business', inverse_of: :creator, dependent: :destroy
   has_many :business_users, dependent: :destroy
   has_many :businesses, through: :business_users
+  has_one :address, as: :addressable, dependent: :destroy
 
   rolify
 

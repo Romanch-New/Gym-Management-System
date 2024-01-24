@@ -29,6 +29,18 @@ end
   end
 end
 
+User.find_each do |user|
+  Address.create!(addressable_id: user.id,
+                  addressable_type: 'User',
+                  address_type: 'shipping',
+                  line1: Faker::Address.street_address,
+                  line2: Faker::Address.secondary_address,
+                  city: Faker::Address.city,
+                  state: Faker::Address.state,
+                  country: Faker::Address.country,
+                  postal_code: Faker::Address.zip)
+end
+
 User.admin.each do |admin|
   Business.find_or_create_by!(name: Faker::Company.name, business_type: 0) do |business|
     business.user_id = admin.id
@@ -64,4 +76,18 @@ Business.find_each do |business|
                   state: Faker::Address.state,
                   country: Faker::Address.country,
                   postal_code: Faker::Address.zip)
+  BusinessBranch.create!(business_id: business.id,
+                         name: Faker::Company.name,
+                         phone_number: Faker::PhoneNumber.cell_phone_in_e164)
+  business.business_branches.each do |branch|
+    Address.create!(addressable_id: branch.id,
+                    addressable_type: 'BusinessBranch',
+                    address_type: 'shipping',
+                    line1: Faker::Address.street_address,
+                    line2: Faker::Address.secondary_address,
+                    city: Faker::Address.city,
+                    state: Faker::Address.state,
+                    country: Faker::Address.country,
+                    postal_code: Faker::Address.zip)
+  end
 end
