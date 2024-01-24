@@ -11,6 +11,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  subscription           :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -94,5 +95,24 @@ class UserTest < ActiveSupport::TestCase
     user = User.new(email: @unique_email, password: '1234567890', password_confirmation: '1234567890')
     user.admin = nil
     assert_not user.save, 'Saved the user without admin flag'
+  end
+
+  test 'check_subscription should update admin attribute based on subscription status' do
+    # Create a new user with a subscription status of true
+    user = User.new(email: @unique_email, password: '1234567890', password_confirmation: '1234567890')
+    assert user.save, 'Failed to save the user with subscription and admin status is not passed as an argument'
+
+    user.subscription = true, 'Failed to update the subscription status of the user to true'
+    assert user.save, 'Failed to save the user with subscription status true'
+
+    # Assert that the admin attribute of the user is true
+    assert_equal true, user.admin, 'Admin attribute is not true when subscription status is true'
+
+    # Update the subscription status of the user to false and save the user
+    user.subscription = false
+    assert user.save, 'Failed to save the user with subscription status false'
+
+    # Assert that the admin attribute of the user is false
+    assert_equal false, user.admin, 'Admin attribute is not false when subscription is expired'
   end
 end
