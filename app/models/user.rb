@@ -11,6 +11,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  subscription           :boolean          default(FALSE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -25,6 +26,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  before_validation :downcase_email
+
   validates :email, presence: true, uniqueness: { case_sensitive: false }, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, length: { minimum: 6, maximum: 128 }
   validates :password_confirmation, presence: true
@@ -38,14 +41,26 @@ class User < ApplicationRecord
 
   rolify
 
+  before_save :check_subscription
+
   scope :admin, -> { where(admin: true) }
   scope :find_by_roles, ->(roles) { joins(:roles).where(roles: { name: roles }) }
   scope :find_by_business, ->(business) { joins(:businesses).where(businesses: { name: business }) }
 
-  after_create :assign_default_role
+  before_save :assign_default_role
 
   def assign_default_role
     add_role(:new_user) if roles.blank?
+  end
+
+  def downcase_email
+    self.email = email.downcase if email.present?
+  end
+
+  def check_subscription
+    return unless persisted?
+
+    self.admin = subscription ? true : false
   end
 
   def admin?
