@@ -26,6 +26,7 @@ class Business < ApplicationRecord
   has_many :users, through: :business_users
   has_many :addresses, as: :addressable, dependent: :destroy
   has_many :business_branches, dependent: :destroy
+  has_one :profile, as: :profileable, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :business_type, presence: true, inclusion: { in: %w[business personal] }

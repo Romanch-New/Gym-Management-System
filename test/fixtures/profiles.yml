@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id               :bigint           not null, primary key
+#  about            :text             default("I am a member of Sweat Society App.")
+#  first_name       :string
+#  last_name        :string
+#  phone_number     :string(15)
+#  profession       :string           default("none")
+#  profileable_type :string           not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  profileable_id   :bigint           not null
+#
+# Indexes
+#
+#  index_profiles_on_profileable  (profileable_type,profileable_id)
+#
+one:
+  profileable: one (User)
+  first_name: 'Romanch'
+  last_name: 'Sharma'
+  profession: 'Software Engineer'
+  about: 'I am a software engineer with 5 years of experience in various technologies.'
+two:
+  profileable: two (Business)
+  first_name: 'John'
+  last_name: 'Doe'
+  profession: 'Software Engineer'
+  about: 'I am a software engineer with 5 years of experience in various technologies.'

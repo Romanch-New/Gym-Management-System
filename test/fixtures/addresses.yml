@@ -20,10 +20,8 @@
 #  index_addresses_on_addressable  (addressable_type,addressable_id)
 #
 # test/fixtures/addresses.yml
-
 one:
-  addressable_id: 1
-  addressable_type: 'Business'
+  addressable: one (Business)
   address_type: 'shipping'
   line1: '123 Main St'
   line2: 'Apt 4B'
@@ -33,8 +31,7 @@ one:
   postal_code: '12345'
 
 two:
-  addressable_id: 2
-  addressable_type: 'Business'
+  addressable: two (Business)
   address_type: 'billing'
   line1: '456 Oak St'
   line2: 'Suite 200'

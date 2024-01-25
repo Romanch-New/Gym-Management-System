@@ -5,7 +5,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  admin                  :boolean          default(FALSE)
+#  admin                  :boolean          default(FALSE), not null
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -39,6 +39,7 @@ class User < ApplicationRecord
   has_many :business_users, dependent: :destroy
   has_many :businesses, through: :business_users
   has_one :address, as: :addressable, dependent: :destroy
+  has_one :profile, as: :profileable, dependent: :destroy
 
   rolify
 

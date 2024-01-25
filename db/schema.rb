@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_25_194405) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,11 +31,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
 
   create_table "business_branches", force: :cascade do |t|
     t.string "name"
-    t.string "phone_number"
     t.bigint "business_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id"], name: "index_business_branches_on_business_id"
+    t.index ["name"], name: "index_business_branches_on_name", unique: true
   end
 
   create_table "business_users", force: :cascade do |t|
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
     t.datetime "updated_at", null: false
     t.index ["business_id", "user_id"], name: "index_business_users_on_business_id_and_user_id", unique: true
     t.index ["business_id"], name: "index_business_users_on_business_id"
-    t.index ["user_id"], name: "index_business_users_on_user_id", unique: true
+    t.index ["user_id"], name: "index_business_users_on_user_id"
   end
 
   create_table "businesses", force: :cascade do |t|
@@ -57,6 +57,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_businesses_on_name", unique: true
     t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "profession", default: "none"
+    t.string "phone_number", limit: 15
+    t.text "about", default: "I am a member of Sweat Society App."
+    t.string "profileable_type", null: false
+    t.bigint "profileable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profileable_type", "profileable_id"], name: "index_profiles_on_profileable"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -77,7 +90,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_24_122855) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "admin", default: false
+    t.boolean "admin", default: false, null: false
     t.boolean "subscription", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

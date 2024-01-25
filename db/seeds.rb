@@ -15,7 +15,7 @@ require 'faker'
 
 def create_address(addressable)
   Address.create!(
-    addressable: addressable,
+    addressable:,
     address_type: 'shipping',
     line1: Faker::Address.street_address,
     line2: Faker::Address.secondary_address,
@@ -23,6 +23,15 @@ def create_address(addressable)
     state: Faker::Address.state,
     country: Faker::Address.country,
     postal_code: Faker::Address.zip
+  )
+end
+
+def create_profile(profileable)
+  Profile.create!(
+    profileable:,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    phone_number: Faker::PhoneNumber.cell_phone_in_e164
   )
 end
 # Create a default admin user
@@ -43,6 +52,7 @@ end
 
 User.find_each do |user|
   create_address(user)
+  create_profile(user)
 end
 
 User.admin.each do |admin|
@@ -65,13 +75,16 @@ Business.find_each do |business|
                         password: p,
                         password_confirmation: p)
     BusinessUser.create!(business_id: business.id, user_id: user.id, role: role.name)
+    create_address(user)
+    create_profile(user)
   end
 
   create_address(business)
+  create_profile(business)
   BusinessBranch.create!(business_id: business.id,
-                         name: Faker::Company.name,
-                         phone_number: Faker::PhoneNumber.cell_phone_in_e164)
+                         name: Faker::Company.name)
   business.business_branches.each do |branch|
     create_address(branch)
+    create_profile(branch)
   end
 end

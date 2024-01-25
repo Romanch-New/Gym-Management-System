@@ -2,16 +2,16 @@
 #
 # Table name: business_branches
 #
-#  id           :bigint           not null, primary key
-#  name         :string
-#  phone_number :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  business_id  :bigint           not null
+#  id          :bigint           not null, primary key
+#  name        :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  business_id :bigint           not null
 #
 # Indexes
 #
 #  index_business_branches_on_business_id  (business_id)
+#  index_business_branches_on_name         (name) UNIQUE
 #
 # Foreign Keys
 #
@@ -20,10 +20,8 @@
 class BusinessBranch < ApplicationRecord
   belongs_to :business
 
-  validates :name, presence: true
-  validates :phone_number, presence: true,
-                           length: { minimum: 10, maximum: 17 },
-                           format: { with: /\A\+?\d{10,17}\z/, message: I18n.t('business_branch.phone_number_error') }
+  validates :name, presence: true, uniqueness: true
 
   has_one :address, as: :addressable, dependent: :destroy
+  has_one :profile, as: :profileable, dependent: :destroy
 end
