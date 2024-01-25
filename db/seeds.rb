@@ -13,6 +13,18 @@
 # # rails db:seed:replant
 require 'faker'
 
+def create_address(addressable)
+  Address.create!(
+    addressable: addressable,
+    address_type: 'shipping',
+    line1: Faker::Address.street_address,
+    line2: Faker::Address.secondary_address,
+    city: Faker::Address.city,
+    state: Faker::Address.state,
+    country: Faker::Address.country,
+    postal_code: Faker::Address.zip
+  )
+end
 # Create a default admin user
 2.times do
   User.find_or_create_by!(email: Faker::Internet.email, admin: true) do |user|
@@ -30,15 +42,7 @@ end
 end
 
 User.find_each do |user|
-  Address.create!(addressable_id: user.id,
-                  addressable_type: 'User',
-                  address_type: 'shipping',
-                  line1: Faker::Address.street_address,
-                  line2: Faker::Address.secondary_address,
-                  city: Faker::Address.city,
-                  state: Faker::Address.state,
-                  country: Faker::Address.country,
-                  postal_code: Faker::Address.zip)
+  create_address(user)
 end
 
 User.admin.each do |admin|
@@ -54,40 +58,20 @@ end
 # create a default business user
 Business.find_each do |business|
   10.times do
-    user = User.new(email: Faker::Internet.email, admin: false) do |u|
-      p = 'Faker::Internet.password'
-      u.password = p
-      u.password_confirmation = p
-    end
     role = Role.all.sample
-    if user.save
-      BusinessUser.create!(business_id: business.id, user_id: user.id, role: role.name)
-    else
-      Rails.logger.debug { "Failed to save user: #{user.errors.full_messages.join(', ')}" }
-    end
+    p = 'Faker::Internet.password'
+    user = User.create!(email: Faker::Internet.email,
+                        admin: false,
+                        password: p,
+                        password_confirmation: p)
+    BusinessUser.create!(business_id: business.id, user_id: user.id, role: role.name)
   end
 
-  Address.create!(addressable_id: business.id,
-                  addressable_type: 'Business',
-                  address_type: 'shipping',
-                  line1: Faker::Address.street_address,
-                  line2: Faker::Address.secondary_address,
-                  city: Faker::Address.city,
-                  state: Faker::Address.state,
-                  country: Faker::Address.country,
-                  postal_code: Faker::Address.zip)
+  create_address(business)
   BusinessBranch.create!(business_id: business.id,
                          name: Faker::Company.name,
                          phone_number: Faker::PhoneNumber.cell_phone_in_e164)
   business.business_branches.each do |branch|
-    Address.create!(addressable_id: branch.id,
-                    addressable_type: 'BusinessBranch',
-                    address_type: 'shipping',
-                    line1: Faker::Address.street_address,
-                    line2: Faker::Address.secondary_address,
-                    city: Faker::Address.city,
-                    state: Faker::Address.state,
-                    country: Faker::Address.country,
-                    postal_code: Faker::Address.zip)
+    create_address(branch)
   end
 end

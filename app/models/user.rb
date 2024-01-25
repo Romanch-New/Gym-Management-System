@@ -67,4 +67,10 @@ class User < ApplicationRecord
   def admin?
     admin
   end
+
+  def created_businesses
+    return I18n.t('user.business_not_found') unless admin?
+
+    super
+  end
 end

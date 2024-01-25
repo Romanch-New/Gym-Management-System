@@ -29,5 +29,7 @@
 
 en:
   hello: "Hello world"
+  user:
+    business_not_found: "Business not found"
   business_branch:
     phone_number_error: "must be a string of 10 to 15 digits"

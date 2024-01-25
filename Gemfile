@@ -59,9 +59,11 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows]
   gem 'faker' # Use faker for generating fake data
+  gem 'hirb' # Use hirb for pretty console output
+  gem 'pry'
+  gem 'pry-byebug'
   gem 'pry-rails' # Use pry for debugging
   gem 'rails-erd' # Use rails-erd for generating ERD
-  gem 'table_print' # Use table_print for printing tables in console
 end
 
 group :development do
